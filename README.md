@@ -1,7 +1,7 @@
 # Passport-osu
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
-with [Reddit](https://osu.ppy.sh/) using the OAuth 2.0 API.
+with [osu!](https://osu.ppy.sh/) using the OAuth 2.0 API.
 
 This module lets you authenticate using osu! in your Node.js applications.
 By plugging into Passport, Reddit authentication can be easily and
