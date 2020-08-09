@@ -60,7 +60,7 @@ app.get('/auth/osu/cb', passport.authenticate('osu', { failureRedirect: '/' }), 
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/MiraiSubject/passport-osu/tree/master/examples/login).
+For a complete, working example, refer to the [login example](https://github.com/MiraiSubject/passport-osu/tree/master/example/login).
 
 ## References
 
