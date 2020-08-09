@@ -19,7 +19,7 @@ npm install passport-osu
 
 ### Configure Strategy
 
-The Reddit authentication strategy authenticates users using a Reddit
+The osu! authentication strategy authenticates users using a osu!
 account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
