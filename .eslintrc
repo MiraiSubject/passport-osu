@@ -1,0 +1,81 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-module-boundary-types": [
+            "error",
+            {
+                "allowArgumentsExplicitlyTypedAsAny": true,
+                "allowHigherOrderFunctions": true,
+                "allowTypedFunctionExpressions": true
+            }
+        ],
+        "@typescript-eslint/no-empty-interface": "off",
+        "accessor-pairs": "error",
+        "array-callback-return": "error",
+        "block-scoped-var": "error",
+        "complexity": "error",
+        "curly": [
+            "error",
+            "multi-or-nest"
+        ],
+        "default-case": "error",
+        "default-case-last": "error",
+        "default-param-last": "error",
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "max-classes-per-file": [
+            "error",
+            2
+        ],
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "arrow-spacing": "error",
+        "no-confusing-arrow": [
+            "error",
+            {
+                "allowParens": true
+            }
+        ],
+        "no-duplicate-imports": "error",
+        "no-useless-constructor": "error",
+        "no-useless-concat": "error",
+        "no-var": "error",
+        "no-use-before-define": "error",
+        "prefer-arrow-callback": "error",
+        "prefer-const": "warn",
+        "prefer-regex-literals": "warn",
+        "prefer-template": "error",
+        "prefer-spread": "warn",
+        "sort-imports": "warn",
+        "yoda": "warn",
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxEOF": 0
+            }
+        ]
+    }
+}
