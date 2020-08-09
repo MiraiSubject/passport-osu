@@ -28,11 +28,11 @@ export default class Server {
 
         passport.use(strat);
 
-        passport.serializeUser((user: any, done: any) => { // Save data to session
+        passport.serializeUser((user: any, done: any) => {
             done(null, user);
         });
 
-        passport.deserializeUser((user: any, done: any) => { // Get data from session
+        passport.deserializeUser((user: any, done: any) => {
             done(null, user);
         });
 
