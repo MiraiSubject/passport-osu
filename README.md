@@ -31,8 +31,7 @@ passport.use(new OsuStrategy({
     clientID: OSU2_CLIENT_ID,
     clientSecret: OSU2_CLIENT_SECRET,
     callbackURL: "http://localhost:8000/auth/osu/callback"
-},
-function(accessToken, refreshToken, profile, done) {
+}, (accessToken, refreshToken, profile, done) => {
     User.findOrCreate({ osuId: profile.id }, function (err, user) {
     return done(err, user);
     });
