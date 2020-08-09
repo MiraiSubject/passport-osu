@@ -66,6 +66,7 @@ For a complete, working example, refer to the [login example](https://github.com
 
 - [Definitely Typed: passport-github2 types](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/passport-github2)
 - [Passport-Github2](https://github.com/cfsghost/passport-github)
+- [Passport-reddit README](https://github.com/Slotos/passport-reddit)
 
 ## License
 
