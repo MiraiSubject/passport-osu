@@ -28,6 +28,7 @@ accepts these credentials and calls `done` providing a user, as well as
 import OsuStrategy from 'passport-osu'; // or const OsuStrategy = require('passport-osu');
 
 passport.use(new OsuStrategy({
+    type: 'StrategyOptions',
     clientID: OSU2_CLIENT_ID,
     clientSecret: OSU2_CLIENT_SECRET,
     callbackURL: "http://localhost:8000/auth/osu/callback"
