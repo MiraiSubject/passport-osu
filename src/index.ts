@@ -20,20 +20,22 @@ export default class OsuStrategy extends OAuth2Strategy {
         this.name = "osu";
     }
 
-    userProfile(accessToken: string, done: (err?: Error | null, profile?: any) => void): void {
+    userProfile(accessToken: string, done: (err?: Error | null, profile?: PassportProfile) => void): void {
         this._oauth2.get('https://osu.ppy.sh/api/v2/me', accessToken, (err, body) => {
             if (err || body instanceof Buffer || body === undefined) 
                 return done(new InternalOAuthError('Failed to fetch the user profile.', err))
-            
-            let parsedData;
 
             try {
-                parsedData = JSON.parse(body);
-                parsedData.provider = 'osu';
-                parsedData.displayName = parsedData.username;
+                const json = JSON.parse(body)
+                const parsedData: PassportProfile = {
+                    _raw: body,
+                    _json: json,
+                    provider: "osu",
+                    displayName: json.username
+                }
                 return done(null, parsedData);
             } catch (e) {
-                return done(new Error('Failed to parse the user profile.'));
+                return done(new InternalOAuthError('Failed to parse the user profile.', e));
             }
         });
     }
@@ -77,7 +79,15 @@ export interface StrategyOptions extends _StrategyOptionsBase {
     type: 'StrategyOptions';
     passReqToCallback?: false;
 }
+
 export interface StrategyOptionsWithRequest extends _StrategyOptionsBase {
     type: 'StrategyOptionsWithRequest';
     passReqToCallback: true;
+}
+
+export interface PassportProfile {
+    _raw: string;
+    _json: any;
+    provider: string;
+    displayName: string;
 }
