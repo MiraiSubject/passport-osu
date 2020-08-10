@@ -1,6 +1,6 @@
 {
   "name": "passport-osu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A passport.js provider for osu!",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
