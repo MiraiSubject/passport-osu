@@ -30,7 +30,7 @@ export default class OsuStrategy extends OAuth2Strategy {
             try {
                 parsedData = JSON.parse(body);
                 parsedData.provider = 'osu';
-                parsedData.accessToken = accessToken;
+                parsedData.displayName = parsedData.username;
                 return done(null, parsedData);
             } catch (e) {
                 return done(new Error('Failed to parse the user profile.'));
