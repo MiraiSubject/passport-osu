@@ -4,14 +4,17 @@ import passport from 'passport';
 
 export default class OsuStrategy extends OAuth2Strategy {
 
-    constructor(options: StrategyOptions, verify: OAuth2Strategy.VerifyFunction) {
+    constructor(options: StrategyOptions | StrategyOptionsWithRequest, verify: OAuth2Strategy.VerifyFunction | OAuth2Strategy.VerifyFunctionWithRequest) {
         options = options || {};
         options.customHeaders = options.customHeaders || {};
         options.authorizationURL = options.authorizationURL || 'https://osu.ppy.sh/oauth/authorize';
         options.tokenURL = options.tokenURL || 'https://osu.ppy.sh/oauth/token';
         options.scopeSeparator = options.scopeSeparator || ',';
 
-        super(options as OAuth2Strategy.StrategyOptions, verify);
+        if (options.type === "StrategyOptions") 
+            super(options as OAuth2Strategy.StrategyOptions, verify as OAuth2Strategy.VerifyFunction);
+         else 
+            super(options as OAuth2Strategy.StrategyOptionsWithRequest, verify as OAuth2Strategy.VerifyFunctionWithRequest);
 
         this._oauth2.useAuthorizationHeaderforGET(true);
         this.name = "osu";
@@ -71,8 +74,10 @@ export interface _StrategyOptionsBase extends OAuth2StrategyOptionsWithoutRequir
 }
 
 export interface StrategyOptions extends _StrategyOptionsBase {
+    type: 'StrategyOptions';
     passReqToCallback?: false;
 }
 export interface StrategyOptionsWithRequest extends _StrategyOptionsBase {
+    type: 'StrategyOptionsWithRequest';
     passReqToCallback: true;
 }
