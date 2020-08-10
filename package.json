@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A passport.js provider for osu!",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -10,15 +11,22 @@
   },
   "author": "MiraiSubject",
   "license": "MIT",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiraiSubject/passport-osu"
+  },
+  "homepage": "https://github.com/MiraiSubject/passport-osu#readme",
   "devDependencies": {
     "eslint": "^7.6.0",
-    "@types/passport-oauth2": "^1.4.9",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
     "@typescript-eslint/parser": "^3.8.0",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/passport-oauth2": "^1.4.9",
     "passport": "^0.4.1",
     "passport-oauth2": "^1.5.0"
   }
