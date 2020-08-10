@@ -9,7 +9,7 @@ export default class OsuStrategy extends OAuth2Strategy {
         options.customHeaders = options.customHeaders || {};
         options.authorizationURL = options.authorizationURL || 'https://osu.ppy.sh/oauth/authorize';
         options.tokenURL = options.tokenURL || 'https://osu.ppy.sh/oauth/token';
-        options.scopeSeparator = options.scopeSeparator || ',';
+        options.scopeSeparator = options.scopeSeparator || ' ';
 
         if (options.type === "StrategyOptions") 
             super(options as OAuth2Strategy.StrategyOptions, verify as OAuth2Strategy.VerifyFunction);
