@@ -11,7 +11,7 @@ unobtrusively integrated into any application or framework that supports
 
 ## Install
 
-```
+```bash
 npm install passport-osu
 ```
 
@@ -49,9 +49,7 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
 ```javascript
-app.get('/auth/osu', (_req: Request, _res: Response, next: any) => {
-    next()
-}, passport.authenticate('osu'));
+app.get('/auth/osu', passport.authenticate('osu'));
 
 app.get('/auth/osu/cb', passport.authenticate('osu', { failureRedirect: '/' }), (req: Request, res: Response) => {
     res.send("Success!");

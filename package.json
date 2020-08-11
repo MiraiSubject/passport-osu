@@ -5,9 +5,14 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "build": "tsc",
-    "lint": "eslint ./src --ext .ts"
+    "lint": "eslint ./src --ext .ts",
+    "prepare": "yarn build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "yarn prepare && yarn lint",
+    "set-github": "jq '.name = \"@MiraiSubject/passport-osu\"' ./package.json > package.json.tmp",
+    "set-npmjs": "jq '.name = \"passport-osu\"' ./package.json > package.json.tmp"
   },
   "author": "MiraiSubject",
   "license": "MIT",
@@ -19,6 +24,7 @@
     "url": "git+https://github.com/MiraiSubject/passport-osu"
   },
   "homepage": "https://github.com/MiraiSubject/passport-osu#readme",
+  "keywords": ["passport", "osu", "auth", "authentication", "oauth2"],
   "devDependencies": {
     "eslint": "^7.6.0",
     "@typescript-eslint/eslint-plugin": "^3.8.0",
