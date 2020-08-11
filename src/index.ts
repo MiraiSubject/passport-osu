@@ -31,6 +31,7 @@ export default class OsuStrategy extends OAuth2Strategy {
                     _raw: body,
                     _json: json,
                     provider: "osu",
+                    id: json.id,
                     displayName: json.username
                 }
                 return done(null, parsedData);
@@ -89,5 +90,6 @@ export interface PassportProfile {
     _raw: string;
     _json: any;
     provider: string;
+    id: number;
     displayName: string;
 }
