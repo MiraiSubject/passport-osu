@@ -24,7 +24,7 @@ account and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which
 accepts these credentials and calls `done` providing a user, as well as
 `options` specifying a client ID, client secret, and callback URL.
 
-```javascript
+```typescript
 import OsuStrategy from 'passport-osu'; // or const OsuStrategy = require('passport-osu');
 
 passport.use(new OsuStrategy({
@@ -39,6 +39,8 @@ passport.use(new OsuStrategy({
 }
 ));
 ```
+
+If you're using this module in Javascript, please use `new OsuStrategy.default(...);` instead. 
 
 #### Authenticate Requests
 
