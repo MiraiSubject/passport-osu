@@ -5,11 +5,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
     "build": "tsc",
     "lint": "eslint ./src --ext .ts",
     "prepare": "yarn build",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "yarn lint",
     "preversion": "yarn prepare && yarn lint",
     "set-github": "jq '.name = \"@miraisubject/passport-osu\"' ./package.json > package.json.tmp",
     "set-npmjs": "jq '.name = \"passport-osu\"' ./package.json > package.json.tmp"

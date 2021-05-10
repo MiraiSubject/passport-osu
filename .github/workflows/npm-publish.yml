@@ -30,7 +30,7 @@ jobs:
       - run: yarn install --pure-lockfile --non-interactive
       - run: yarn set-npmjs
       - run: mv package.json.tmp package.json
-      - run: npm publish
+      - run: yarn publish --new-version ${{ github.event.release.tag_name }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
@@ -47,6 +47,6 @@ jobs:
       - run: yarn install --pure-lockfile --non-interactive
       - run: yarn set-github
       - run: mv package.json.tmp package.json
-      - run: npm publish
+      - run: yarn publish --new-version ${{ github.event.release.tag_name }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
