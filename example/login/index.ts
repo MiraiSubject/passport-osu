@@ -1,6 +1,8 @@
 import express, { Express, Request, Response } from 'express'
 import OsuStrategy from '../../lib/index';
 import passport from 'passport';
+import { config } from 'dotenv';
+config();
 
 export default class Server {
     private app: Express;
@@ -14,8 +16,8 @@ export default class Server {
         this.app.use(passport.initialize());
         this.app.use(passport.session());
 
-        const clientID = 'clientID';
-        const clientSecret = 'clientSecret';
+        const clientID = `${process.env.CLIENT_ID}` || 'clientID';
+        const clientSecret = `${process.env.CLIENT_SECRET}` || 'clientSecret';
         const callbackUrl = "http://localhost:8000/auth/osu/cb";
 
         const strat: OsuStrategy = new OsuStrategy({

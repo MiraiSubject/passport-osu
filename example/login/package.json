@@ -1,0 +1,29 @@
+{
+  "name": "passport-osu-login-example",
+  "version": "1.0.7",
+  "description": "A passport.js provider for osu!",
+  "main": "lib/index.ts",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "author": "MiraiSubject",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiraiSubject/passport-osu"
+  },
+  "homepage": "https://github.com/MiraiSubject/passport-osu#readme",
+  "keywords": [
+    "passport",
+    "osu",
+    "auth",
+    "authentication",
+    "oauth2"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "ts-node": "^10.7.0"
+  }
+}
