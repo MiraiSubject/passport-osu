@@ -26,7 +26,7 @@ export default class Server {
             clientSecret,
             callbackURL: callbackUrl
         }, (_accessToken: string, _refreshToken: string, profile: any, cb: any) => {
-            cb(null, profile);
+            return cb(null, profile);
         });
 
         passport.use(strat);
