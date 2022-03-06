@@ -1,5 +1,5 @@
 import express, { Express, Request, Response } from 'express'
-import OsuStrategy from 'passport-osu';
+import OsuStrategy from '../../lib/index';
 import passport from 'passport';
 
 export default class Server {
@@ -19,6 +19,7 @@ export default class Server {
         const callbackUrl = "http://localhost:8000/auth/osu/cb";
 
         const strat: OsuStrategy = new OsuStrategy({
+            type: 'StrategyOptions',
             clientID,
             clientSecret,
             callbackURL: callbackUrl
