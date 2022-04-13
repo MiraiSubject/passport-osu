@@ -4,17 +4,16 @@ import passport from 'passport';
 
 export default class OsuStrategy extends OAuth2Strategy {
 
-    constructor(options: StrategyOptions | StrategyOptionsWithRequest, verify: OAuth2Strategy.VerifyFunction | OAuth2Strategy.VerifyFunctionWithRequest) {
+    constructor(options: StrategyOptionsWithRequest, verify: OAuth2Strategy.VerifyFunctionWithRequest)
+    constructor(options: StrategyOptions, verify: OAuth2Strategy.VerifyFunction)
+    constructor(options: any, verify: any) {
         options = options || {};
         options.customHeaders = options.customHeaders || {};
         options.authorizationURL = options.authorizationURL || 'https://osu.ppy.sh/oauth/authorize';
         options.tokenURL = options.tokenURL || 'https://osu.ppy.sh/oauth/token';
         options.scopeSeparator = options.scopeSeparator || ' ';
 
-        if (options.type === "StrategyOptions") 
-            super(options as OAuth2Strategy.StrategyOptions, verify as OAuth2Strategy.VerifyFunction);
-         else 
-            super(options as OAuth2Strategy.StrategyOptionsWithRequest, verify as OAuth2Strategy.VerifyFunctionWithRequest);
+        super(options, verify);
 
         this._oauth2.useAuthorizationHeaderforGET(true);
         this.name = "osu";
@@ -22,7 +21,7 @@ export default class OsuStrategy extends OAuth2Strategy {
 
     userProfile(accessToken: string, done: (err?: Error | null, profile?: PassportProfile) => void): void {
         this._oauth2.get('https://osu.ppy.sh/api/v2/me', accessToken, (err, body) => {
-            if (err || body instanceof Buffer || body === undefined) 
+            if (err || body instanceof Buffer || body === undefined)
                 return done(new InternalOAuthError('Failed to fetch the user profile.', err))
 
             try {
@@ -42,7 +41,7 @@ export default class OsuStrategy extends OAuth2Strategy {
     }
 }
 
-export interface StrategyOption extends passport.AuthenticateOptions {
+export interface StrategyOptions extends passport.AuthenticateOptions {
     clientID: string;
     clientSecret: string;
     callbackURL: string;
@@ -77,13 +76,19 @@ export interface _StrategyOptionsBase extends OAuth2StrategyOptionsWithoutRequir
 }
 
 export interface StrategyOptions extends _StrategyOptionsBase {
-    type: 'StrategyOptions';
+    /**
+     * @deprecated this property is not required anymore. This will be deleted in 6 months.
+     */
+    type?: 'StrategyOptions'
     passReqToCallback?: false;
 }
 
 export interface StrategyOptionsWithRequest extends _StrategyOptionsBase {
-    type: 'StrategyOptionsWithRequest';
-    passReqToCallback: true;
+    /**
+     * @deprecated this property is not required anymore. This will be deleted in 6 months.
+     */
+    type?: 'StrategyOptionsWithRequest'
+    passReqToCallback?: true;
 }
 
 export interface PassportProfile {

@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express'
-import OsuStrategy from '../../lib/index';
-import passport from 'passport';
+import OsuStrategy from '../../src/index';
 import { config } from 'dotenv';
+import passport from 'passport';
 config();
 
 export default class Server {
@@ -21,13 +21,10 @@ export default class Server {
         const callbackUrl = "http://localhost:8000/auth/osu/cb";
 
         const strat: OsuStrategy = new OsuStrategy({
-            type: 'StrategyOptions',
             clientID,
             clientSecret,
             callbackURL: callbackUrl
-        }, (_accessToken: string, _refreshToken: string, profile: any, cb: any) => {
-            return cb(null, profile);
-        });
+        }, (_accessToken: string, _refreshToken: string, profile: any, cb: any) => cb(null, profile));
 
         passport.use(strat);
 
