@@ -23,8 +23,14 @@ export default class Server {
         const strat: OsuStrategy = new OsuStrategy({
             clientID,
             clientSecret,
+            // If you want to read a specific mode from the user instead of 
+            // the default game mode, change this to match the appropriate game mode
+            userProfileUrl: 'https://osu.ppy.sh/api/v2/me/osu',
             callbackURL: callbackUrl
-        }, (_accessToken: string, _refreshToken: string, profile: any, cb: any) => cb(null, profile));
+        }, (_accessToken: string, _refreshToken: string, profile: any, cb: any) => {
+            console.log(profile);
+            return cb(null, profile);
+        });
 
         passport.use(strat);
 
