@@ -22,8 +22,11 @@
   ],
   "devDependencies": {},
   "dependencies": {
+    "@types/express": "^4.17.15",
+    "@types/express-session": "^1.17.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "ts-node": "^10.7.0"
+    "express-session": "^1.17.3",
+    "ts-node": "^10.9.1"
   }
 }
