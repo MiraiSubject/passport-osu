@@ -1,3 +1,8 @@
+**This project is abandoned** 
+
+Please use [Arctic/lucia-auth](https://arctic.js.org/providers/osu) as the currently maintained alternative.
+
+
 # Passport-osu
 
 [Passport](https://github.com/jaredhanson/passport) strategy for authenticating
