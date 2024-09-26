@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express'
 import OsuStrategy from '../../src/index';
 import { config } from 'dotenv';
 import passport from 'passport';
+import session from 'express-session'
 config();
 
 export default class Server {
@@ -13,6 +14,19 @@ export default class Server {
 
     async start(): Promise<void> {
 
+        const sessionOptions: session.SessionOptions = {
+            name: '_session',
+            secret: `DO NOT USE IN PROD`,
+            resave: false,
+            proxy: true,
+            saveUninitialized: false,
+            cookie: {
+                secure: false,
+                maxAge: 300 * 1000
+            },
+        }
+
+        this.app.use(session(sessionOptions));
         this.app.use(passport.initialize());
         this.app.use(passport.session());
 
